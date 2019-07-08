@@ -33,7 +33,9 @@ jobs:
             helm ls
             helm install --name wordpress stable/wordpress
             kubectl get services
+            sleep 15 && kubectl get po --all-namespaces
             helm delete --purge wordpress
+
 
 workflows:
   build_docker_image:
