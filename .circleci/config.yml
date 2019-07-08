@@ -26,7 +26,9 @@ jobs:
             microk8s.enable dns dashboard
             microk8s.kubectl get all --all-namespaces
             sudo snap install helm --classic
-            helm init --service-account default
+            microk8s.kubectl create serviceaccount --namespace kube-system tiller
+            microk8s.kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+            helm init --service-account tiller
             helm ls
             helm install --name wordpress stable/wordpress
             kubectl get services
