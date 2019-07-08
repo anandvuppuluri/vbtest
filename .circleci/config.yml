@@ -28,7 +28,7 @@ jobs:
             sudo snap install helm --classic
             microk8s.kubectl create serviceaccount --namespace kube-system tiller
             microk8s.kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-            helm init --service-account tiller
+            helm init --service-account tiller --tiller-tls-verify
             helm ls
             helm install --name wordpress stable/wordpress
             kubectl get services
