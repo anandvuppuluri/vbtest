@@ -26,7 +26,7 @@ jobs:
             microk8s.enable dns dashboard
             microk8s.kubectl get all --all-namespaces
             sudo snap install helm --classic
-            helm init
+            helm init --service-account default
             helm ls
             helm install --name wordpress stable/wordpress
             kubectl get services
