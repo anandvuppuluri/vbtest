@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     working_directory: ~/tmp
@@ -25,4 +25,13 @@ jobs:
             microk8s.start
             microk8s.enable dns dashboard
   
-    
+workflows:
+  build_docker_image:
+    jobs:
+    - build:
+        filters:
+          tags:
+            only: /.*/   
+    - microk8s-check:
+        requires:
+          - build
