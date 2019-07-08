@@ -24,7 +24,8 @@ jobs:
           command: |
             microk8s.start
             microk8s.enable dns dashboard
-  
+            microk8s.kubectl get all --all-namespaces
+              
 workflows:
   build_docker_image:
     jobs:
