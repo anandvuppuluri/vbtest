@@ -25,7 +25,6 @@ jobs:
             microk8s.start
             microk8s.enable dns dashboard
             microk8s.kubectl get all --all-namespaces
-            cat $HOME/.kube/config | grep microk8s
             snap install helm
             helm init
             helm ls
