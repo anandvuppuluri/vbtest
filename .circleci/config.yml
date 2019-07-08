@@ -28,8 +28,8 @@ jobs:
             microk8s.kubectl config view --raw > $HOME/.kube/config
             kubectl get nodes
             sudo snap install helm --classic
-            helm init 
-            helm ls
+            helm init
+            sleep 15 && helm ls
             helm install --name wordpress stable/wordpress
             kubectl get services
             helm delete --purge wordpress
