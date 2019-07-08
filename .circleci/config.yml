@@ -8,3 +8,21 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      
+  microk8s-check:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - run:
+          name: Install microk8s
+          command: |
+            sudo snap install microk8s --classic
+            sudo snap alias microk8s.kubectl kubectl
+            echo 'export PATH="/snap/bin:$PATH"' >> $BASH_ENV
+      - run:
+          name: Enable services
+          command: |
+            microk8s.start
+            microk8s.enable dns dashboard
+  
+    
