@@ -29,7 +29,7 @@ jobs:
             kubectl get nodes
             sudo snap install helm --classic
             helm init
-            sleep 15 && kubectl get po --all-namespaces
+            sleep 25 && kubectl get po --all-namespaces
             helm ls
             helm install --name wordpress stable/wordpress
             kubectl get services
