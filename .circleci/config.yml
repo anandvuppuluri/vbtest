@@ -39,12 +39,9 @@ jobs:
             sleep 10
             kubectl get po --all-namespaces
             helm delete --purge wordpress
-            npm install -g newman
-            pwd
-            ls
-            npm -v
-            newman -v
-            newman run /home/circleci/project/postman/Marketplace.postman_collection.json -e /home/circleci/project/postman/Marketplace.postman_environment.json
+            docker run hello-world
+            docker pull postman/newman:ubuntu
+            docker run -t postman/newman:ubuntu run "https://www.getpostman.com/collections/8a0c9bc08f062d12dcda"
 
 
 workflows:
