@@ -34,7 +34,11 @@ jobs:
             helm install --name wordpress stable/wordpress --wait
             kubectl get services
             sleep 15 && kubectl get po --all-namespaces
+            kubectl get po --all-namespaces
+            sleep 10
+            kubectl get po --all-namespaces
             helm delete --purge wordpress
+            npm install -g newman
 
 
 workflows:
