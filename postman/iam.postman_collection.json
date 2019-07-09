@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "d27882eb-0998-44f1-97de-9bae2b6250d5",
+		"name": "iam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://teamriders.dev.hpedevops.net/identity/token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5315af6-fa20-4cab-8bac-87e5fd8e1a03",
+						"exec": [
+							"pm.test(\"C1 Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+							"});pm.environment.set(\"token\", pm.response.json().access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"grant_type\": \"password\",\r\n     \"client_id\": \"testpublic\",\r\n     \"username\": \"vba@hpe.com\",\r\n     \"password\": \"Password@123\",\r\n     \"tenant_id\": \"master\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://{{IAMURL}}/identity/token",
+					"protocol": "https",
+					"host": [
+						"{{IAMURL}}"
+					],
+					"path": [
+						"identity",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5315af6-fa20-4cab-8bac-87e5fd8e1a03",
+						"exec": [
+							"pm.test(\"C2 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{IAMURL}}/identity/token/validate",
+					"protocol": "https",
+					"host": [
+						"{{IAMURL}}"
+					],
+					"path": [
+						"identity",
+						"token",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

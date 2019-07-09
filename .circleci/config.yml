@@ -13,6 +13,7 @@ jobs:
     machine:
       image: ubuntu-1604:201903-01
     steps:
+      - checkout
       - run:
           name: Install microk8s
           command: |
@@ -39,6 +40,10 @@ jobs:
             kubectl get po --all-namespaces
             helm delete --purge wordpress
             npm install -g newman
+            pwd
+            cd ./vbtest/postman
+            pwd
+            newman run iam.postman_collection.json -e Marketplace.postman_environment.json
 
 
 workflows:
