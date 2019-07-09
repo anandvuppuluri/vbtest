@@ -42,7 +42,7 @@ jobs:
             docker run hello-world
             docker pull postman/newman:ubuntu
             docker run -t postman/newman:ubuntu run "https://www.getpostman.com/collections/8a0c9bc08f062d12dcda"
-
+            docker run -t postman/newman:ubuntu run  ./postman/Marketplace.postman_collection.json -e ./postman/Marketplace.postman_environment.json
 
 workflows:
   build_docker_image:
