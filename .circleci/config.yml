@@ -42,7 +42,7 @@ jobs:
             npm install -g newman
             pwd
             ls
-            cd ./vbtest/postman
+            cd ./postman
             pwd
             newman run iam.postman_collection.json -e Marketplace.postman_environment.json
 
