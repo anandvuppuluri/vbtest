@@ -13,13 +13,13 @@ jobs:
     machine:
       image: ubuntu-1604:201903-01
     steps:
-      - checkout
       - run:
           name: Install microk8s
           command: |
             sudo snap install microk8s --classic
             sudo snap alias microk8s.kubectl kubectl
             echo 'export PATH="/snap/bin:$PATH"' >> $BASH_ENV
+      - checkout
       - run:
           name: Enable services
           command: |
@@ -41,6 +41,7 @@ jobs:
             helm delete --purge wordpress
             npm install -g newman
             pwd
+            ls
             cd ./vbtest/postman
             pwd
             newman run iam.postman_collection.json -e Marketplace.postman_environment.json
