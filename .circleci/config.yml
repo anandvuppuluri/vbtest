@@ -43,6 +43,9 @@ jobs:
             pwd
             ls
             cd ./postman
+            ls
+            npm -v
+            newman -v
             pwd
             newman run iam.postman_collection.json -e Marketplace.postman_environment.json
 
