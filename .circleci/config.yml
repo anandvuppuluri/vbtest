@@ -44,7 +44,7 @@ jobs:
             ls
             npm -v
             newman -v
-            newman run /home/circleci/project/postman/iam.postman_collection.json -e /home/circleci/project/postman/Marketplace.postman_environment.json
+            newman run /home/circleci/project/postman/Marketplace.postman_collection.json -e /home/circleci/project/postman/Marketplace.postman_environment.json
 
 
 workflows:
