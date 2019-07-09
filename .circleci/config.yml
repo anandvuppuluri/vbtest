@@ -31,7 +31,7 @@ jobs:
             helm init --wait
             sleep 25 && kubectl get po --all-namespaces
             helm ls
-            helm install --name wordpress stable/wordpress --wait
+            helm install --name wordpress stable/wordpress
             kubectl get services
             sleep 15 && kubectl get po --all-namespaces
             kubectl get po --all-namespaces
