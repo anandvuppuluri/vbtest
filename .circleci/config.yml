@@ -42,12 +42,9 @@ jobs:
             npm install -g newman
             pwd
             ls
-            cd ./postman
-            ls
             npm -v
             newman -v
-            pwd
-            newman run iam.postman_collection.json -e Marketplace.postman_environment.json
+            newman run /home/circleci/project/postman/iam.postman_collection.json -e /home/circleci/project/postman/Marketplace.postman_environment.json
 
 
 workflows:
